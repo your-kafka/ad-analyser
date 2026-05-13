@@ -65,9 +65,9 @@
         }
     },
     {
-        "image_name": "ad_09.jpg",
-        "final_score": 8,
-        "raw_score": 10,
+        "image_name": "ad_02.jpg",
+        "final_score": 7,
+        "raw_score": 8,
         "score_breakdown": {
             "Hook Strength": {
                 "score": 1,
@@ -80,6 +80,71 @@
                 "max": 2,
                 "reason": "CTA is strong — 'order now' combines action and urgency.",
                 "fix": "Already solid. Test a benefit-driven variant: 'Get 10 min delivery — Order Now'."
+            },
+            "Emotional Punch": {
+                "score": 2,
+                "max": 2,
+                "reason": "Emotion is clear and the copy earns it — 'price shock'.",
+                "fix": "Strong. Consider testing a second emotional angle."
+            },
+            "Visual-Copy Fit": {
+                "score": 0,
+                "max": 2,
+                "reason": "Image and copy seem to be telling different stories.",
+                "fix": "Major misalignment. Either change the image to match the copy, or rewrite the copy to match the image."
+            },
+            "Audience Focus": {
+                "score": 2,
+                "max": 2,
+                "reason": "Audience is specific — the ad knows exactly who it's talking to.",
+                "fix": "Good. Now check: does EVERY line of copy speak to that specific person?"
+            },
+            "Color Psychology": {
+                "score": 1,
+                "max": 2,
+                "reason": "Color sub-scores — Emotion Match: 1/2 | Brand Fit: 2/2 | Consistency: 0/2. Weakest: Color Consistency. Too many colors (6) — the palette is scattered and cognitively overwhelming.",
+                "fix": "Rebuild with a maximum of 2 dominant colors. Every additional color halves the impact of the primary one."
+            }
+        },
+        "verdict": {
+            "verdict": "⚠️ TEST FURTHER",
+            "verdict_short": "test",
+            "reasoning": "Score of 7/10. Has potential but 'Visual-Copy Fit' scored 0/2.",
+            "next_action": "Fix this first: Major misalignment. Either change the image to match the copy, or rewrite the copy to match the image. Then retest before committing budget."
+        },
+        "ad_data": {
+            "brand_name": "Nescafe",
+            "image_description": "An image of a can of Nescafe Iced Latte on a wooden table with a brown cloth underneath. The can features a picture of the drink and is placed against a blue gradient background.",
+            "ad_copy": "Nescafe Ice Latte at ₹1 just for you. Add before checkout and get your order delivered to your doorstep with Instamart. ₹1 Items on Instamart. Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
+            "hook": "Nescafe iced latte at ₹1",
+            "call_to_action": "Order Now",
+            "visual_style": "The ad features a predominantly blue gradient background with orange and white accents. The overall aesthetic is clean and promotional, highlighting the product and the deal. The color scheme is vibrant and attention-grabbing.",
+            "emotional_appeal": "Price Shock",
+            "target_audience": "Young adults looking for affordable and convenient food and beverage options",
+            "dominant_colors": [
+                "blue",
+                "orange",
+                "white"
+            ],
+            "color_count": 6
+        }
+    },
+    {
+        "image_name": "ad_09.jpg",
+        "final_score": 7,
+        "raw_score": 8,
+        "score_breakdown": {
+            "Hook Strength": {
+                "score": 1,
+                "max": 2,
+                "reason": "Hook works but won't stop a fast scroll reliably.",
+                "fix": "Add a number or turn it into a question. Example: 'Why does X?' or 'Only 3 left'."
+            },
+            "CTA Clarity": {
+                "score": 0,
+                "max": 2,
+                "reason": "No CTA found — the ad leaves the viewer with nowhere to go.",
+                "fix": "Add a direct action line: 'Order Now', 'Download Today', 'Get Yours Free'."
             },
             "Emotional Punch": {
                 "score": 2,
@@ -107,20 +172,20 @@
             }
         },
         "verdict": {
-            "verdict": "✅ RUN IT",
-            "verdict_short": "run",
-            "reasoning": "Score of 8/10 with no critical failures. Ad is ready to air — color, copy, and targeting are all aligned.",
-            "next_action": "Launch and monitor CTR/conversion for 72 hours. Set as control for A/B tests."
+            "verdict": "❌ DON'T RUN",
+            "verdict_short": "stop",
+            "reasoning": "Score of 7/10. Fundamental problems in: CTA Clarity. Running this will waste budget without moving metrics.",
+            "next_action": "Don't patch — rebuild. Start from audience + color palette and work forward."
         },
         "ad_data": {
             "brand_name": "InstaMart",
-            "image_description": "The ad features a blue background with a prominent orange and white InstaMart logo at the top. Below the logo, the text 'Midnight cravings? Say no more, ra.' is displayed. Three products are showcased: Lay's India's Magic Masala Chips, Thums Up Soft Drink Bottle, and Coca-Cola Diet Coke Can. Each product has its price and quantity listed.",
+            "image_description": "The ad features a blue background with a prominent orange and white InstaMart logo at the top. Below the logo, the text 'Midnight cravings? Say no more, ra.' is displayed. Three products are showcased on light blue platforms: Lay's India's Magic Masala Chips, Thums Up Soft Drink Bottle, and Coca-Cola Diet Coke Can. Each product has its price and size listed.",
             "ad_copy": "Midnight cravings? Say no more, ra. Lay's India's Magic Masala Chips ₹39 80 g, Thums Up Soft Drink Bottle ₹35 750 ml, Coca-Cola Diet Coke Can ₹35 300 ml. Insta delivered to your doorstep",
             "hook": "Midnight cravings?",
-            "call_to_action": "Order Now",
-            "visual_style": "The ad features a bold and vibrant aesthetic with a predominantly blue background, accented with orange and white. The color palette is bright and eye-catching, creating a lively mood. The products are displayed prominently with their prices and quantities.",
-            "emotional_appeal": "Convenience - The ad appeals to the viewer's need for convenience by offering late-night delivery of popular snacks and drinks.",
-            "target_audience": "Young adults and individuals who are likely to have late-night cravings for snacks and beverages.",
+            "call_to_action": "None",
+            "visual_style": "The ad has a bold and vibrant aesthetic with a predominantly blue background. The use of orange and white for the logo and highlights creates contrast. The overall mood is convenient and appealing.",
+            "emotional_appeal": "Convenience - The ad appeals to the viewer's need for quick delivery of late-night cravings, emphasizing the ease of getting products delivered to their doorstep.",
+            "target_audience": "Young adults and individuals who experience late-night cravings and value convenience.",
             "dominant_colors": [
                 "blue",
                 "orange",
@@ -179,17 +244,17 @@
         },
         "ad_data": {
             "brand_name": "Instamart",
-            "image_description": "A plate of sliced raw mango and cucumber sprinkled with spices and salt, accompanied by a small bowl of spice on a blue surface.",
+            "image_description": "A wooden plate with sliced cucumbers and raw mangoes, sprinkled with spices and salt, accompanied by a small bowl of spice on a blue surface.",
             "ad_copy": "The OG summer snack needs no recipe. Just raw mango, cucumber, and Instamart at your door.  . Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
             "hook": "The OG summer snack",
             "call_to_action": "Order Now",
-            "visual_style": "The ad features a vibrant and appetizing image with a predominantly green and orange color scheme, evoking feelings of freshness and warmth. The use of natural light and a simple wooden plate adds to the rustic yet appealing aesthetic. The overall mood is casual and inviting.",
+            "visual_style": "The ad features a vibrant and refreshing aesthetic with a focus on natural colors. The dominant colors are orange, green, and white, creating a lively and appetizing mood. The use of a wooden plate and blue surface adds warmth and coziness.",
             "emotional_appeal": "Convenience",
-            "target_audience": "Young adults looking for easy and quick summer snack solutions",
+            "target_audience": "Young adults looking for easy and convenient food delivery options",
             "dominant_colors": [
-                "green",
                 "orange",
-                "brown"
+                "green",
+                "white"
             ],
             "color_count": 7
         }
@@ -214,7 +279,7 @@
             "Emotional Punch": {
                 "score": 2,
                 "max": 2,
-                "reason": "Emotion is clear and the copy earns it — 'convenience'.",
+                "reason": "Emotion is clear and the copy earns it — 'convenience - the ad emphasizes easy del'.",
                 "fix": "Strong. Consider testing a second emotional angle."
             },
             "Visual-Copy Fit": {
@@ -244,12 +309,12 @@
         },
         "ad_data": {
             "brand_name": "InstaMart",
-            "image_description": "A cooler filled with ice and various drink bottles and a can, set in a dimly lit living room. The drinks include a Schweppes can, a Dukes bottle, and a Bacardi mixer bottle.",
+            "image_description": "A cooler filled with ice and three bottles/cans of party mixers: Schweppes tonic water, Dukes water, and Bacardi mixer. The background is a dimly lit living room.",
             "ad_copy": "Party plan sorted! Get premium mixers delivered with Instamart. No rush, no hassle - just chill vibes. Instamart - Get anything you need delivered to your doorstep.",
             "hook": "Party plan sorted!",
             "call_to_action": "Order Now",
-            "visual_style": "The ad features a dark blue and orange color scheme with a cool, relaxed aesthetic. The dominant mood is casual and inviting. The use of a cooler with drinks suggests a carefree, party atmosphere.",
-            "emotional_appeal": "Convenience",
+            "visual_style": "The ad features a dark blue living room background with a cooler containing three drink bottles/cans. The dominant aesthetic is relaxed and inviting. The color palette includes blue, orange, and various product colors.",
+            "emotional_appeal": "Convenience - The ad emphasizes easy delivery of party mixers, suggesting a hassle-free experience.",
             "target_audience": "Young adults planning parties or social gatherings",
             "dominant_colors": [
                 "blue",
@@ -313,9 +378,9 @@
             "ad_copy": "Dil maange mango? Instamart delivers fresh, juicy mangoes straight to your doorstep. Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
             "hook": "Dil maange mango?",
             "call_to_action": "Order Now",
-            "visual_style": "The ad features a vibrant and appetizing visual style with a focus on the mangoes. The dominant color scheme is yellow-orange, with accents of green and blue. The overall mood is fresh and inviting.",
+            "visual_style": "The ad features a vibrant and appetizing visual style with a focus on the mangoes. The dominant color scheme includes shades of yellow, orange, and green. The overall aesthetic is fresh and inviting.",
             "emotional_appeal": "Convenience",
-            "target_audience": "Urban Indians looking for convenient grocery delivery",
+            "target_audience": "The target audience appears to be individuals looking for convenient delivery of fresh produce, likely urban dwellers with busy lifestyles.",
             "dominant_colors": [
                 "orange",
                 "yellow",
@@ -374,82 +439,17 @@
         },
         "ad_data": {
             "brand_name": "Instamart",
-            "image_description": "The ad features a blue gradient background with white text and two product images: one of tomatoes and one of onions. Each product image has a blue background with a white price symbol and text indicating the product name and quantity.",
+            "image_description": "The ad features a blue gradient background with white text and images of tomatoes and onions. Two product images are shown: one of tomatoes labeled 'Indian Tomato 500g' and another of onions labeled 'Onion 1kg'. Each image has a ₹1 price tag.",
             "ad_copy": "Pick any 1 everyday veggie at ₹1",
             "hook": "Pick any 1 everyday veggie at ₹1",
             "call_to_action": "Stock up now on Instamart!",
-            "visual_style": "The ad uses a clean and simple design with a blue gradient background that transitions from dark to light. The use of white text and orange accents creates contrast. The overall aesthetic is modern and promotional.",
+            "visual_style": "The ad uses a clean and simple design with a blue gradient background, white text, and clear product images. The color scheme is predominantly blue and white with accents of orange and red from the products and branding.",
             "emotional_appeal": "Price Shock",
             "target_audience": "Household shoppers looking for affordable groceries",
             "dominant_colors": [
                 "blue",
                 "white",
-                "orange"
-            ],
-            "color_count": 6
-        }
-    },
-    {
-        "image_name": "ad_02.jpg",
-        "final_score": 6,
-        "raw_score": 7,
-        "score_breakdown": {
-            "Hook Strength": {
-                "score": 1,
-                "max": 2,
-                "reason": "Hook works but won't stop a fast scroll reliably.",
-                "fix": "Add a number or turn it into a question. Example: 'Why does X?' or 'Only 3 left'."
-            },
-            "CTA Clarity": {
-                "score": 2,
-                "max": 2,
-                "reason": "CTA is strong — 'order now' combines action and urgency.",
-                "fix": "Already solid. Test a benefit-driven variant: 'Get 10 min delivery — Order Now'."
-            },
-            "Emotional Punch": {
-                "score": 2,
-                "max": 2,
-                "reason": "Emotion is clear and the copy earns it — 'price shock'.",
-                "fix": "Strong. Consider testing a second emotional angle."
-            },
-            "Visual-Copy Fit": {
-                "score": 0,
-                "max": 2,
-                "reason": "Image and copy seem to be telling different stories.",
-                "fix": "Major misalignment. Either change the image to match the copy, or rewrite the copy to match the image."
-            },
-            "Audience Focus": {
-                "score": 2,
-                "max": 2,
-                "reason": "Audience is specific — the ad knows exactly who it's talking to.",
-                "fix": "Good. Now check: does EVERY line of copy speak to that specific person?"
-            },
-            "Color Psychology": {
-                "score": 0,
-                "max": 2,
-                "reason": "Color sub-scores — Emotion Match: 0/2 | Brand Fit: 1/2 | Consistency: 0/2. Weakest: Emotion Match. Color-emotion mismatch — the dominant colors contradict the ad's emotional intent.",
-                "fix": "Either change the color palette to match the emotion, or rethink the emotional angle to fit the colors."
-            }
-        },
-        "verdict": {
-            "verdict": "❌ DON'T RUN",
-            "verdict_short": "stop",
-            "reasoning": "Score of 6/10. Fundamental problems in: Visual-Copy Fit and Color Psychology. Running this will waste budget without moving metrics.",
-            "next_action": "Don't patch — rebuild. Start from audience + color palette and work forward."
-        },
-        "ad_data": {
-            "brand_name": "Nescafe",
-            "image_description": "An image of a can of Nescafe Iced Latte on a wooden table with a brown cloth, against a blue gradient background.",
-            "ad_copy": "Nescafe Ice Latte at ₹1 just for you. Add before checkout and get your order delivered to your doorstep with Instamart. ₹1 Items on Instamart. Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
-            "hook": "Nescafe iced latte at ₹1",
-            "call_to_action": "Order Now",
-            "visual_style": "The ad features a brown and white can of Nescafe Iced Latte on a wooden table with a brown cloth. The background is a blue gradient. The color palette is predominantly brown, blue, and white, creating a calm and inviting mood.",
-            "emotional_appeal": "Price Shock",
-            "target_audience": "Young adults looking for affordable and convenient food and beverage options",
-            "dominant_colors": [
-                "blue",
-                "brown",
-                "white"
+                "red"
             ],
             "color_count": 6
         }
@@ -520,6 +520,71 @@
         }
     },
     {
+        "image_name": "ad_06.jpg",
+        "final_score": 5,
+        "raw_score": 6,
+        "score_breakdown": {
+            "Hook Strength": {
+                "score": 1,
+                "max": 2,
+                "reason": "Hook works but won't stop a fast scroll reliably.",
+                "fix": "Add a number or turn it into a question. Example: 'Why does X?' or 'Only 3 left'."
+            },
+            "CTA Clarity": {
+                "score": 2,
+                "max": 2,
+                "reason": "CTA is strong — 'order now' combines action and urgency.",
+                "fix": "Already solid. Test a benefit-driven variant: 'Get 10 min delivery — Order Now'."
+            },
+            "Emotional Punch": {
+                "score": 1,
+                "max": 2,
+                "reason": "Emotional direction is clear but the copy doesn't land the feeling.",
+                "fix": "Rewrite the body copy to use words that trigger that specific emotion."
+            },
+            "Visual-Copy Fit": {
+                "score": 0,
+                "max": 2,
+                "reason": "Image and copy seem to be telling different stories.",
+                "fix": "Major misalignment. Either change the image to match the copy, or rewrite the copy to match the image."
+            },
+            "Audience Focus": {
+                "score": 2,
+                "max": 2,
+                "reason": "Audience is specific — the ad knows exactly who it's talking to.",
+                "fix": "Good. Now check: does EVERY line of copy speak to that specific person?"
+            },
+            "Color Psychology": {
+                "score": 0,
+                "max": 2,
+                "reason": "Color sub-scores — Emotion Match: 1/2 | Brand Fit: 1/2 | Consistency: 0/2. Weakest: Color Consistency. Too many colors (7) — the palette is scattered and cognitively overwhelming.",
+                "fix": "Rebuild with a maximum of 2 dominant colors. Every additional color halves the impact of the primary one."
+            }
+        },
+        "verdict": {
+            "verdict": "❌ DON'T RUN",
+            "verdict_short": "stop",
+            "reasoning": "Score of 5/10. Fundamental problems in: Visual-Copy Fit and Color Psychology. Running this will waste budget without moving metrics.",
+            "next_action": "Don't patch — rebuild. Start from audience + color palette and work forward."
+        },
+        "ad_data": {
+            "brand_name": "Instamart",
+            "image_description": "A wicker basket filled with various fruits like bananas, apples, watermelon, grapes, and lychees, placed on a beige surface against a brown background.",
+            "ad_copy": "This is your sign to eat healthy. Get fresh fruits, delivered to your door with Instamart. Daily fresh fruits delivered. Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
+            "hook": "This is your sign to eat healthy",
+            "call_to_action": "Order Now",
+            "visual_style": "The ad features a warm and natural aesthetic with earthy tones, predominantly brown and beige. The color palette includes shades of brown, green, yellow, and red. The overall mood is inviting and healthy.",
+            "emotional_appeal": "Trust",
+            "target_audience": "Health-conscious individuals, likely urban dwellers who value convenience",
+            "dominant_colors": [
+                "brown",
+                "green",
+                "yellow"
+            ],
+            "color_count": 7
+        }
+    },
+    {
         "image_name": "ad_07.jpg",
         "final_score": 5,
         "raw_score": 6,
@@ -571,7 +636,7 @@
             "brand_name": "Instamart",
             "image_description": "An advertisement featuring two types of bread on a wooden table against a blue background. The breads are in their packaging: one is a blue and red Britannia Sandwich White Bread bag and the other is an orange and white The Health Factory Zero Maida Whole Wheat Bread bag.",
             "ad_copy": "Freshly baked breads, delivered to you!",
-            "hook": "Freshly baked breads",
+            "hook": "Freshly baked breads, delivered to you!",
             "call_to_action": "None found",
             "visual_style": "The aesthetic is clean and modern with a focus on the products. The color palette includes blue, white, orange, red, and brown, creating a warm and inviting mood.",
             "emotional_appeal": "Convenience - The ad emphasizes the delivery aspect, suggesting ease of getting freshly baked bread at home.",
@@ -582,71 +647,6 @@
                 "white"
             ],
             "color_count": 6
-        }
-    },
-    {
-        "image_name": "ad_06.jpg",
-        "final_score": 4,
-        "raw_score": 5,
-        "score_breakdown": {
-            "Hook Strength": {
-                "score": 1,
-                "max": 2,
-                "reason": "Hook works but won't stop a fast scroll reliably.",
-                "fix": "Add a number or turn it into a question. Example: 'Why does X?' or 'Only 3 left'."
-            },
-            "CTA Clarity": {
-                "score": 2,
-                "max": 2,
-                "reason": "CTA is strong — 'order now' combines action and urgency.",
-                "fix": "Already solid. Test a benefit-driven variant: 'Get 10 min delivery — Order Now'."
-            },
-            "Emotional Punch": {
-                "score": 1,
-                "max": 2,
-                "reason": "Emotional direction is clear but the copy doesn't land the feeling.",
-                "fix": "Rewrite the body copy to use words that trigger that specific emotion."
-            },
-            "Visual-Copy Fit": {
-                "score": 0,
-                "max": 2,
-                "reason": "Image and copy seem to be telling different stories.",
-                "fix": "Major misalignment. Either change the image to match the copy, or rewrite the copy to match the image."
-            },
-            "Audience Focus": {
-                "score": 1,
-                "max": 2,
-                "reason": "Audience is somewhat defined but could be sharper.",
-                "fix": "Add a specific life situation or pain point: not just 'urban users' but 'urban users who hate waiting'."
-            },
-            "Color Psychology": {
-                "score": 0,
-                "max": 2,
-                "reason": "Color sub-scores — Emotion Match: 1/2 | Brand Fit: 1/2 | Consistency: 0/2. Weakest: Color Consistency. Too many colors (7) — the palette is scattered and cognitively overwhelming.",
-                "fix": "Rebuild with a maximum of 2 dominant colors. Every additional color halves the impact of the primary one."
-            }
-        },
-        "verdict": {
-            "verdict": "❌ DON'T RUN",
-            "verdict_short": "stop",
-            "reasoning": "Score of 4/10. Fundamental problems in: Visual-Copy Fit and Color Psychology. Running this will waste budget without moving metrics.",
-            "next_action": "Don't patch — rebuild. Start from audience + color palette and work forward."
-        },
-        "ad_data": {
-            "brand_name": "Instamart",
-            "image_description": "A wicker basket filled with various fruits like bananas, apples, watermelon, grapes, and lychees, placed on a beige surface against a brown background.",
-            "ad_copy": "This is your sign to eat healthy. Get fresh fruits, delivered to your door with Instamart. Daily fresh fruits delivered. Instamart - Get anything you need delivered to your doorstep. [Button: Order Now]",
-            "hook": "This is your sign to eat healthy",
-            "call_to_action": "Order Now",
-            "visual_style": "The ad features a warm and natural aesthetic with earthy tones, predominantly brown and beige. The color palette includes shades of brown, green, red, and yellow. The overall mood is inviting and healthy.",
-            "emotional_appeal": "Trust",
-            "target_audience": "Health-conscious individuals looking for convenient grocery delivery",
-            "dominant_colors": [
-                "brown",
-                "green",
-                "red"
-            ],
-            "color_count": 7
         }
     }
 ]
