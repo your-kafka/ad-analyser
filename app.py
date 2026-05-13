@@ -170,14 +170,21 @@ with tab_upload:
 
             for i, img_file in enumerate(uploaded_images):
                 progress.progress(i / total, text=f"🔍 Extracting from {img_file.name}...")
+                
                 with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
                     tmp.write(img_file.read())
                     tmp_path = tmp.name
+                
                 try:
                     copy_text = copy_inputs.get(img_file.name, "")
+                    
+                    # AI Extraction
                     blueprint = extract_insights_with_ai(tmp_path, copy_text)
                     extracted[img_file.name] = blueprint.dict()
+                    
+                    # Scoring Logic
                     score_result = evaluate_ad(blueprint.dict())
+                    
                     scored.append({
                         "image_name":      img_file.name,
                         "final_score":     score_result["total_score"],
@@ -186,9 +193,15 @@ with tab_upload:
                         "ad_data":         blueprint.dict(),
                     })
                 except Exception as e:
-                    st.error(f"❌ Failed on {img_file.name}: {e}")
+                    # Graceful failure: Warn the user but don't stop the loop
+                    st.warning(f"⚠️ Skipping {img_file.name}: The AI couldn't parse this specific ad. (Error: {e})")
+                    continue 
                 finally:
-                    os.unlink(tmp_path)
+                    # Clean up the temp file regardless of success or failure
+                    if os.path.exists(tmp_path):
+                        os.unlink(tmp_path)
+
+            # Ensure data is sorted even if some items were skipped
 
             scored.sort(key=lambda x: x["final_score"], reverse=True)
 

@@ -32,72 +32,68 @@ ai_client = Groq()
 # 1.  THE BLUEPRINT  ·  Forces the AI to give us consistent data
 # ──────────────────────────────────────────────────────────────
 
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
 class AdBlueprint(BaseModel):
     brand_name: str = Field(
+        default="Unknown Brand",
         description="The brand or company being advertised (e.g. 'Instamart', 'Zomato')."
     )
     image_description: str = Field(
+        default="No description provided",
         description=(
             "A factual description of the visual: people, objects, setting, "
-            "colors, text overlays, and layout. Be specific — 'a smiling woman "
-            "holding a grocery bag in a bright kitchen' not 'a lifestyle shot'."
+            "colors, text overlays, and layout."
         )
     )
     ad_copy: str = Field(
+        default="No text found",
         description="The full text copy of the ad, exactly as written."
     )
     hook: str = Field(
+        default="No hook identified",
         description=(
             "The single phrase or visual element that is designed to stop a "
-            "thumb from scrolling in the first 1-2 seconds. Could be a bold "
-            "claim, a question, a price, or a surprising image."
+            "thumb from scrolling in the first 1-2 seconds."
         )
     )
+    # This was the specific field causing the crash:
     call_to_action: str = Field(
+        default="None found",
         description=(
             "The exact action the ad tells the viewer to take. "
-            "Examples: 'Order Now', 'Shop the sale', 'Download the app'. "
             "Write 'None found' if there is no explicit CTA."
         )
     )
     visual_style: str = Field(
-        description=(
-            "The overall aesthetic: color palette, mood, photography vs illustration, "
-            "busy vs minimal, premium vs playful. Two to three sentences."
-        )
+        default="Standard",
+        description="The overall aesthetic: color palette, mood, photography vs illustration."
     )
     emotional_appeal: str = Field(
+        default="Convenience",
         description=(
-            "The core emotion or desire this ad is trying to trigger. "
-            "Choose one: Convenience | FOMO | Aspiration | Humor | Trust | "
-            "Price Shock | Social Proof | Curiosity. Explain your choice briefly."
+            "The core emotion: Convenience | FOMO | Aspiration | Humor | Trust | "
+            "Price Shock | Social Proof | Curiosity."
         )
     )
     target_audience: str = Field(
-        description=(
-            "Who this ad seems to be speaking to, based on the visuals and copy. "
-            "E.g. 'Young urban professionals who cook at home' or 'Budget-conscious families'."
-        )
+        default="General Audience",
+        description="Who this ad seems to be speaking to."
     )
 
     # ── NEW FIELDS: Color Psychology (Swarnakar, 2024) ──────────
-    dominant_colors: list[str] = Field(
+    dominant_colors: List[str] = Field(
+        default_factory=list,
         description=(
             "The 1 to 3 most visually dominant colors in this ad. "
-            "Use only standard color names from this list: "
-            "red, blue, yellow, green, black, white, orange, purple, gold, pink, brown, grey. "
-            "Order them from most to least dominant. Example: ['red', 'white', 'orange']. "
-            "Focus on colors that cover the most visual area or carry the most visual weight."
+            "Use only: red, blue, yellow, green, black, white, orange, purple, gold, pink, brown, grey."
         )
     )
     color_count: int = Field(
-        description=(
-            "The total number of distinct, visually significant colors in the ad palette. "
-            "Ignore minor background noise. Count only colors that a viewer consciously notices. "
-            "Typically 1–5."
-        )
+        default=0,
+        description="The total number of distinct, visually significant colors. Typically 1–5."
     )
-
 
 # ──────────────────────────────────────────────────────────────
 # 2.  IMAGE TRANSLATOR  ·  Converts a file into AI-readable code
