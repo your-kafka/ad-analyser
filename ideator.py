@@ -1,16 +1,10 @@
 """
 ideator.py  ·  Step 3 of 3
 ---------------------------
-Instead of just feeding the AI the top 3 ads and asking for ideas,
-we first do our OWN analysis — finding what separates winners from losers —
-and then give the AI those specific patterns as context.
+Analyzes the gap between top and bottom performers, then generates 
+concrete creative concepts grounded in evidence.
 
-The difference:
-  Old approach:  "Here are the good ads. Make more like them."
-  New approach:  "Here's WHY those ads are good (vs why the others failed).
-                  Use those specific patterns to design the next tests."
-
-This produces ideas that are grounded in evidence, not vibes.
+FIXED: Handled potential string formatting errors for Streamlit Cloud.
 """
 
 import json
@@ -21,17 +15,14 @@ from dotenv import load_dotenv
 load_dotenv()
 client = Groq()
 
-
 # ──────────────────────────────────────────────────────────────
 # 1.  PATTERN DETECTIVE  ·  What separates winners from losers?
 # ──────────────────────────────────────────────────────────────
 
 def extract_patterns(scored_ads: list) -> dict:
     """
-    Looks at the top half vs. bottom half of the leaderboard
-    and pulls out what the winners share that the losers lack.
-    
-    Returns a dictionary of concrete, comparable patterns.
+    Looks at the top half vs. bottom half of the leaderboard.
+    Returns a dictionary of concrete patterns or an error if data is insufficient.
     """
     if len(scored_ads) < 2:
         return {"error": "Need at least 2 ads to find patterns."}
@@ -42,13 +33,11 @@ def extract_patterns(scored_ads: list) -> dict:
     losers  = scored_ads[midpoint:]
 
     def avg_score(ads):
-        if not ads:
-            return 0
+        if not ads: return 0.0
         return sum(a["final_score"] for a in ads) / len(ads)
 
     def most_common_emotion(ads):
-        emotions = [a["ad_data"].get("emotional_appeal", "")[:30] for a in ads]
-        return emotions  # We'll let the AI interpret these
+        return [a["ad_data"].get("emotional_appeal", "")[:30] for a in ads]
 
     def common_hooks(ads):
         return [a["ad_data"].get("hook", "") for a in ads]
@@ -56,13 +45,12 @@ def extract_patterns(scored_ads: list) -> dict:
     def common_ctas(ads):
         return [a["ad_data"].get("call_to_action", "") for a in ads]
 
-    # Dimension-by-dimension comparison
     def avg_dimension(ads, dimension):
         scores = [
             a.get("score_breakdown", {}).get(dimension, {}).get("score", 0)
             for a in ads
         ]
-        return round(sum(scores) / len(scores), 1) if scores else 0
+        return round(sum(scores) / len(scores), 1) if scores else 0.0
 
     dimension_names = ["Hook Strength", "CTA Clarity", "Emotional Punch", "Visual-Copy Fit", "Audience Focus"]
 
@@ -90,13 +78,12 @@ def extract_patterns(scored_ads: list) -> dict:
 
 
 # ──────────────────────────────────────────────────────────────
-# 2.  THE IDEA GENERATOR  ·  Grounded in the patterns we found
+# 2.  THE IDEA GENERATOR  ·  Grounded in patterns
 # ──────────────────────────────────────────────────────────────
 
 def generate_new_creative_ideas(brand_name: str = "the brand") -> str:
     """
-    Loads the scored ads, extracts patterns, then asks the AI to generate
-    4 concrete creative concepts that are explicitly tied to those patterns.
+    Analyzes patterns and generates 4 evidence-based ad concepts.
     """
     scored_ads_path = "data/scored_ads.json"
 
@@ -106,43 +93,43 @@ def generate_new_creative_ideas(brand_name: str = "the brand") -> str:
     with open(scored_ads_path, "r") as f:
         scored_ads = json.load(f)
 
-    # Do our own homework before asking the AI for ideas
+    # Perform analysis
     patterns = extract_patterns(scored_ads)
+    
+    # --- CRITICAL FIX: Ensure values are numbers before formatting with :.1f ---
+    win_score  = patterns.get('winner_avg_score', 0.0)
+    loss_score = patterns.get('loser_avg_score', 0.0)
+    gap_adv    = patterns.get('biggest_winner_advantage', 'None')
+    gap_val    = patterns.get('gap_amount', 0.0)
 
-    # Build a rich prompt that includes our findings
+    # Build prompt
     prompt = f"""
 You are a Creative Strategist preparing a brief for a {brand_name} ad team.
 
 I've analyzed {len(scored_ads)} ads and found these patterns:
 
-WHAT'S WORKING (top performers average {patterns.get('winner_avg_score', 'N/A'):.1f}/10):
+WHAT'S WORKING (top performers average {win_score:.1f}/10):
 - Their hooks: {json.dumps(patterns.get('winner_hooks', []), indent=2)}
 - Their CTAs: {json.dumps(patterns.get('winner_ctas', []), indent=2)}
 - Their emotional appeals: {json.dumps(patterns.get('winner_emotions', []), indent=2)}
 
-WHAT'S FAILING (bottom performers average {patterns.get('loser_avg_score', 'N/A'):.1f}/10):
+WHAT'S FAILING (bottom performers average {loss_score:.1f}/10):
 - Their weaker hooks: {json.dumps(patterns.get('loser_hooks', []), indent=2)}
 
 BIGGEST GAP FOUND:
-Winners outperform losers most on "{patterns.get('biggest_winner_advantage', 'N/A')}" 
-by {patterns.get('gap_amount', 0):.1f} points out of 2.
-
-Dimension-by-dimension breakdown:
-{json.dumps(patterns.get('dimension_scores', {}), indent=2)}
+Winners outperform losers most on "{gap_adv}" by {gap_val:.1f} points out of 2.
 
 Based on this evidence, generate exactly 4 creative ad concepts to test next.
 
 For EACH concept, provide:
-1. HYPOTHESIS: What pattern from the data are you testing/doubling down on?
+1. HYPOTHESIS: What pattern from the data are you testing?
 2. VISUAL CONCEPT: Describe the image in one vivid sentence.
-3. HOOK: The exact opening line (max 8 words).
+3. HOOK: The opening line (max 8 words).
 4. BODY COPY: Supporting text (2-3 sentences max).
-5. CTA: The exact call-to-action button text.
-6. WHY THIS WILL WORK: Connect explicitly back to the data you were given.
+5. CTA: The button text.
+6. WHY THIS WILL WORK: Connect back to the analysis data.
 
-Make each concept genuinely different from the others — test different emotional appeals,
-different hook styles, different visual approaches. Think like a scientist designing experiments,
-not a writer generating variations.
+Think like a scientist designing experiments. Every recommendation must tie back to a specific insight.
 """
 
     response = client.chat.completions.create(
@@ -150,16 +137,11 @@ not a writer generating variations.
         messages=[
             {
                 "role": "system",
-                "content": (
-                    "You are a direct-response creative strategist. "
-                    "Your ideas are always specific, testable, and grounded in data. "
-                    "You never use vague phrases like 'authentic storytelling' or 'relatable content'. "
-                    "Every recommendation is tied to a specific insight."
-                )
+                "content": "You are a direct-response creative strategist. Your ideas are specific, testable, and grounded in data."
             },
             {"role": "user", "content": prompt}
         ],
-        temperature=0.75,  # Slightly higher for creative variety, not too random
+        temperature=0.75,
         max_tokens=2000,
     )
 
@@ -171,9 +153,8 @@ not a writer generating variations.
 # ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("🧠 Detecting patterns from your ad data...\n")
+    print("🧠 Detecting patterns and generating new test concepts...\n")
 
-    # Try to pull brand name from existing data
     brand = "the brand"
     if os.path.exists("data/scored_ads.json"):
         with open("data/scored_ads.json") as f:
@@ -184,6 +165,7 @@ if __name__ == "__main__":
     ideas = generate_new_creative_ideas(brand_name=brand)
 
     output_path = "data/new_ideas.txt"
+    os.makedirs("data", exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(ideas)
 
